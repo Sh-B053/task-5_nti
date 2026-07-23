@@ -1,0 +1,80 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg,#667eea,#764ba2);
+}
+
+.container{
+    background: #fff;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,.3);
+}
+
+h1{
+    margin-bottom: 20px;
+    color: #444;
+    font-size: 40px;
+}
+
+.board{
+    display: grid;
+    grid-template-columns: repeat(3,100px);
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.cell{
+    width: 100px;
+    height: 100px;
+    background: #f5f5f5;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 55px;
+    font-weight: bold;
+    color: #764ba2;
+    cursor: pointer;
+    transition: .3s;
+    box-shadow: 0 4px 10px rgba(0,0,0,.15);
+}
+
+.cell:hover{
+    background: #e8e8e8;
+    transform: scale(1.05);
+}
+
+.result{
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    min-height: 35px;
+    margin-bottom: 20px;
+}
+
+button{
+    padding: 12px 30px;
+    border: none;
+    border-radius: 30px;
+    background: #764ba2;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+button:hover{
+    background: #5c3690;
+    transform: translateY(-2px);
+}
