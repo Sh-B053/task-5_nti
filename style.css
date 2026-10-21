@@ -6,14 +6,19 @@
 }
 
 body{
-    height: 100vh;
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
     background: linear-gradient(135deg,#667eea,#764ba2);
+    background-attachment: fixed;
 }
 
 .container{
+    width: 100%;
+    max-width: 400px;
     background: #fff;
     padding: 30px;
     border-radius: 20px;
@@ -29,25 +34,29 @@ h1{
 
 .board{
     display: grid;
-    grid-template-columns: repeat(3,100px);
+    grid-template-columns: repeat(3, 1fr);
     gap: 10px;
-    margin: 20px 0;
+    width: 100%;
+    max-width: 320px;
+    margin: 20px auto;
 }
 
 .cell{
-    width: 100px;
-    height: 100px;
+    width: 100%;
+    aspect-ratio: 1 / 1;
     background: #f5f5f5;
     border-radius: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 55px;
+    font-size: clamp(32px, 13vw, 55px);
     font-weight: bold;
     color: #764ba2;
     cursor: pointer;
     transition: .3s;
     box-shadow: 0 4px 10px rgba(0,0,0,.15);
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
 }
 
 .cell:hover{
@@ -77,4 +86,86 @@ button{
 button:hover{
     background: #5c3690;
     transform: translateY(-2px);
+}
+
+/* ---------- Responsive ---------- */
+
+/* Touch devices: hover effects stick after a tap, so skip the zoom */
+@media (hover: none){
+    .cell:hover{
+        background: #f5f5f5;
+        transform: none;
+    }
+    button:hover{
+        background: #764ba2;
+        transform: none;
+    }
+}
+
+@media (max-width: 480px){
+    body{
+        padding: 10px;
+    }
+    .container{
+        padding: 20px 15px;
+        border-radius: 16px;
+    }
+    h1{
+        font-size: 30px;
+        margin-bottom: 10px;
+    }
+    .board{
+        gap: 8px;
+        margin: 15px auto;
+    }
+    .cell{
+        border-radius: 12px;
+    }
+    .result{
+        font-size: 20px;
+        min-height: 30px;
+        margin-bottom: 15px;
+    }
+    button{
+        padding: 11px 26px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 340px){
+    h1{
+        font-size: 26px;
+    }
+    .board{
+        gap: 6px;
+    }
+}
+
+/* Short landscape phones: keep everything on screen */
+@media (max-height: 520px) and (orientation: landscape){
+    body{
+        align-items: flex-start;
+    }
+    .container{
+        max-width: 340px;
+        padding: 15px;
+    }
+    h1{
+        font-size: 24px;
+        margin-bottom: 5px;
+    }
+    .board{
+        max-width: 200px;
+        gap: 6px;
+        margin: 10px auto;
+    }
+    .cell{
+        font-size: 30px;
+        border-radius: 10px;
+    }
+    .result{
+        font-size: 18px;
+        min-height: 24px;
+        margin-bottom: 10px;
+    }
 }
